@@ -1,0 +1,36 @@
+# Distiller knobs. Plain numbers; edit freely.
+change_cap: 3               # max belief changes (proposals + status changes) per run
+cooling_hours: 24           # heated signals wait this long before counting fully
+cooling_min_heat: 2         # heat >= this cools
+cooling_weight: 0.25        # weight while cooling
+pattern_min_weight: 3       # weighted repeats needed to propose a new belief
+hypothesis_min_weight: 2    # weighted repeats needed to log a hypothesis ("dream")
+variety_min: 2              # distinct bots OR distinct days needed for a pattern
+burst_share: 0.67           # if one session supplies more than this share -> hold as hypothesis
+priors:                     # starting strength by source
+  explicit statement: 0.6
+  sourced fact: 0.6
+  signals: 0.3
+support_step: 0.10          # per supporting signal
+contra_step: 0.15           # per contradicting signal
+explicit_multiplier: 2      # explicit "always/never" signals count double
+half_life_days:             # decay without reinforcement (longest of a belief's segments wins).
+                            # The keys here are also the list of valid segments; add yours.
+  core: 90
+  career: 60
+  studio: 30
+  experiments: 21
+fading_below: 0.30
+revive_above: 0.40
+archive_after_fading_days: 30
+contradiction_window_days: 30
+contradiction_flag_weight: 2
+resurface_days: 21          # "not now" comes back after this
+resurface_new_signals: 2    # "no" comes back only after this many new matching signals
+pivot_bump_days: 14         # after a pivot, patterns need +1 weight for this long
+hub_cap: 15
+reuse:
+  window_days: 14
+  per_bot_max: 2            # same phrase by one bot more than this -> cooling
+  all_bots_max: 3           # same phrase across bots more than this -> cooling
+  cool_days: 7
